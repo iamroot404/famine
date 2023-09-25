@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+{% load static %}
+{%block content%}
+
+<div class="hero-wrap hero-wrap-2" style="background-image: url(/static/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container-fluid">
+    <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+      <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span> <span>My Account</span></p>
+        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">My Account</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section ">
+    <div class="container">
+<div class="row justify-content-center">
+    <div class="col-md-4 grid-margin stretch-card">
+       
+      <div class="card">
+        <div class="card-body">
+        
+          
+        <h6 class="text-center"><img class="img-xs rounded-circle" style="width: 240px; height: 240px;" src="{{user.userprofile.profile_picture.url}}" alt=""></h6>
+        
+        <h6 class="mb-1"><a href="{% url 'edit_account' %}">Edit Profile</a></h6>
+          <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
+            <div class="text-md-center text-xl-left">
+              <h6 class="mb-1">{{userprofile.first_name}} {{userprofile.last_name}}</h6>
+              <p class="text-muted mb-0">Username: {{userprofile.username}}</p>
+              <p class="text-muted mb-0">Phone Number: {{userprofile.phone_number}}</p>
+              <p class="text-muted mb-0">Email: {{userprofile.email}}</p>
+              {% if userprofile.gender %}
+              <p class="text-muted mb-0">Gender: {{userprofile.gender}}</p>
+              {% endif %}
+              {% if userprofile.city %}
+              <p class="text-muted mb-0">City: {{userprofile.city}}</p>
+              {% endif %}
+              {% if userprofile.country %}
+              <p class="text-muted mb-0">Country: {{userprofile.country}}</p>
+              {% endif %}
+            </div>
+           
+          </div>
+          
+        </div>
+        {% include 'includes/alerts.html' %}
+      </div>
+    </div>
+</div>
+</div>
+</section>
+{%endblock%}

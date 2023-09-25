@@ -1,0 +1,102 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<div class="hero-wrap hero-wrap-2" style="background-image: url(/static/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container-fluid">
+    <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+      <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span> <span>Create Account</span></p>
+        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Create Account</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <section class="ftco-section">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-xl-8 ftco-animate">
+          <h3 class="mb-4 billing-heading">REGISTER</h3>
+          <div class="card">
+            <div class="card-body">
+
+                <form action="{% url 'register' %}" method="POST" class="billing-form">
+                        {% csrf_token %}
+                          
+                <div class="row align-items-end">
+                    <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="firstname">First Name</label>
+                      {{form.first_name}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="lastname">Last Name</label>
+                      {{form.last_name}}
+                  </div>
+              </div>
+             
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                      <label for="towncity">Email</label>
+                      {{form.email}}
+                      {{ form.email.errors}}
+
+                  </div>
+                  </div>
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label for="postcodezip">Phone Number</label>
+                          {{form.phone_number}}
+                  </div>
+                  </div>
+                  <div class="w-100"></div>
+                  <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="phone">Password</label>
+                      {{form.password}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                      <label for="emailaddress">Confirm Password</label>
+                      {{form.confirm_password}}
+                      {{form.non_field_errors}}
+                  </div>
+                  
+              </div>
+                
+              <div class="w-100"></div>
+
+              <div class="col-md-12">
+                <div class="form-group mt-4">
+                    <div class="radio">
+                        <p class="mr-3">Already have an Account? <a href="{% url 'login' %}">Login</a></p>
+                        
+                    </div>
+                </div>
+            </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                    <input class="btn btn-primary py-3 px-4 " type="submit" value="Register"/>
+                </div>
+              </div>
+
+              </div>
+            </form><!-- END -->
+                
+            </div>
+        </div> <!-- .col-md-8 -->
+      </div>
+      </div>
+      </div>
+    </div>
+  </section> <!-- .section -->
+
+{% endblock content %}

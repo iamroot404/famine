@@ -1,0 +1,90 @@
+{% extends 'main.html' %}
+{% load static %}
+{%block content%}
+
+<div class="hero-wrap hero-wrap-2" style="background-image: url(/static/images/bg_2.jpg);" data-stellar-background-ratio="0.5">
+  <div class="overlay"></div>
+  <div class="container-fluid">
+    <div class="row no-gutters d-flex slider-text align-items-center justify-content-center" data-scrollax-parent="true">
+      <div class="col-md-6 ftco-animate text-center" data-scrollax=" properties: { translateY: '70%' }">
+        <p class="breadcrumbs" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }"><span class="mr-2"><a href="{% url 'home' %}">Home</a></span> <span>View Users</span></p>
+        <h1 class="mb-3 bread" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">View Users</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="ftco-section ">
+    <div class="container">
+<div class="row justify-content-center">
+    <div class="col-md-12 grid-margin stretch-card">
+      <div class="col-xl-12 ftco-animate">
+        <h3>All Users in the system</h3>
+      <div class="card">
+        <div class="card-body">
+          
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                
+                <th> User's Name </th>
+                <th> Username </th>
+                <th> Email </th>
+                <th> Phone Number </th>
+                <th> Action</th>
+                <th> Status </th>
+                <th><a href="{% url 'download_users'%}">Download Users </a></th>
+              </tr>
+            </thead>
+            <tbody>
+
+              {% if profiles %}
+            
+            {% for profile in profiles %}
+              <tr>
+                
+                <td>
+                  <img src="{{profile.profile_picture.url}}" alt="image" style="width: 40px; height: 40px;" />
+                  <span class="pl-2">{{profile.first_name}} {{profile.last_name}}</span>
+                </td>
+                <td> {{profile.username}} </td>
+                <td> {{profile.email}} </td>
+                <td> {{profile.user.phone_number}} </td>
+
+                {% if profile.user.is_active == False %}
+                <td> <a href="{% url 'activate_user' profile.user.id %}" class="icon-add"></a>  </td>
+                {% else %}
+                <td> <a href="{% url 'deactivate_user' profile.user.id %}" class="icon-close"></a>  </td>
+                {% endif %}
+                
+                
+                {% if profile.user.is_active == True %}
+                <td>
+                  <div class="btn btn-success">Active</div>
+                </td>
+                {% else %}
+                <td>
+                    <div class="btn btn-warning">Pending</div>
+                </td>
+             
+              {% endif %}
+              
+            </tr>
+              {% endfor %}
+              
+            </tbody>
+            {% else %}
+            <td style="color: red;">There are no users in the system</td>
+            {% endif %}
+          </table>
+            
+          
+        </div>
+        {% include 'includes/alerts.html' %}
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+{%endblock%}

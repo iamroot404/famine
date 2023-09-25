@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>All Users</title>
+
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        .table, td, th {  
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        text-align: left;
+        }
+
+        .table {
+        border-collapse: collapse;
+        width: 100%;
+
+        }
+
+        .table th, td {
+        padding: 5px;
+        text-align: center;
+        }
+
+        .td{
+        word-break: inherit;
+        }
+
+        .list-group h3{
+            font-size: 3em;
+        }
+        .list-group p {
+            font-size: 1em;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center">All Users</h2>
+                  
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                
+                <th> Full Name </th>
+                <th> Username </th>
+                <th> Email </th>
+                <th> Phone Number </th> 
+               
+                
+              </tr>
+            </thead>
+            <tbody>
+        
+            
+            {% for profile in profiles %}
+              <tr>
+                
+                <td>
+                  <span class="pl-2">{{profile.first_name}} {{profile.last_name}}</span>
+                </td>
+                <td> {{profile.username}} </td>
+                <td> {{profile.email}} </td>
+                <td> {{profile.user.phone_number}} </td>
+        
+               
+            </tr>
+              {% endfor %}
+              
+            </tbody>
+           
+          </table>
+      </div>
+    
+</body>
+</html>
+
+
+
+
+
+

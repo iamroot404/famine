@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <title>All Users</title>
+
+    <style type="text/css">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+        .table, td, th {  
+        border-bottom: 1px solid #ddd;
+        border-top: 1px solid #ddd;
+        text-align: left;
+        }
+
+        .table {
+        border-collapse: collapse;
+        width: 100%;
+
+        }
+
+        .table th, td {
+        padding: 5px;
+        text-align: center;
+        }
+
+        .td{
+        word-break: inherit;
+        }
+
+        .list-group h3{
+            font-size: 3em;
+        }
+        .list-group p {
+            font-size: 1em;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 class="text-center">All Item Donations</h2>
+                  
+        <table class="table table-bordered">
+            <thead class="thead-primary">
+              <tr class="text-center">
+                <th>Full Name</th>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              
+                {% for donation in donations %}
+              <tr class="text-center">
+                
+                <td class="price">{{donation.user.first_name}} {{donation.user.last_name}}</td>
+                <td class="price">{{donation.item}}</td>
+                <td class="price">{{donation.quantity}}</td>
+                <td class="price">{{donation.created_date}}</td>
+                
+              </tr><!-- END TR-->
+              {% endfor %}
+             
+            </tbody>
+           
+          </table>
+      </div>
+    
+</body>
+</html>
+
+
+
+
+
+
